@@ -16,7 +16,7 @@ curl -sS -L --get https://github.com/tihoangyeudau/rpi-fan/releases/download/1.0
 
 # Copy service file
 cp ambilightwifid@.service ${ROOTFS_DIR}/etc/systemd/system/ambilightwifid@.service
-cp rpi-fan.service ${ROOTFS_DIR}/etc/systemd/system/rpi-fan.service
+cp rpi-fan.service ${ROOTFS_DIR}/etc/systemd/system/rpi-fan@.service
 
 # Enable SPI and force HDMI output
 sed -i "s/^#dtparam=spi=on.*/dtparam=spi=on/" ${ROOTFS_DIR}/boot/config.txt
