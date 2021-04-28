@@ -11,7 +11,7 @@ HYPERION_RELEASE=$HYPERION_DOWNLOAD_URL/$HYPERION_LATEST_VERSION/Ambilight-WiFi-
 # Download latest release
 echo 'Downloading Ambilight WiFi + rpi fan ........................'
 mkdir -p "$ROOTFS_DIR"/tmp
-curl -L $HYPERION_RELEASE --output "$ROOTFS_DIR"/tmp/ambilightwifi.deb
+curl -L $HYPERION_RELEASE --output "$ROOTFS_DIR"/tmp/ambilight-wifi.deb
 curl -sS -L --get https://github.com/tihoangyeudau/rpi-fan/releases/download/1.0.0/rpi-fan.tar.gz | tar --strip-components=0 -C ${ROOTFS_DIR}/usr/share/ rpi-fan -xz
 
 # Copy service file
@@ -37,10 +37,9 @@ sed -i "s/^#PrintLastLog yes.*/PrintLastLog no/" ${ROOTFS_DIR}/etc/ssh/sshd_conf
 
 on_chroot << EOF
 echo 'Installing Ambilight WiFi ........................'
-apt install /tmp/ambilightwifi.deb
-rm /tmp/ambilightwifi.deb
-mv /etc/systemd/system/ambilightwifid@.service /etc/systemd/system/ambilightwifi@.service
+apt install /tmp/ambilight-wifi.deb
+rm /tmp/ambilight-wifi.deb
 echo 'Registering Ambilight WiFi ........................'
-systemctl -q enable ambilightwifi"@rml".service
+systemctl -q enable ambilightwifid"@rml".service
 systemctl -q enable rpi-fan"@rml".service
 EOF
