@@ -40,6 +40,6 @@ echo 'Installing Ambilight WiFi ........................'
 apt install /tmp/ambilight-wifi.deb
 rm /tmp/ambilight-wifi.deb
 echo 'Registering Ambilight WiFi ........................'
-systemctl -q enable ambilightwifid"@rml".service
-systemctl -q enable rpi-fan"@rml".service
+systemctl -q enable ambilightwifid@.service
+systemctl -q enable rpi-fan.service
 EOF
