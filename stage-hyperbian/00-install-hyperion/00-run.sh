@@ -15,6 +15,7 @@ curl -L $HYPERION_RELEASE --output "$ROOTFS_DIR"/tmp/ambilight-wifi.deb
 curl -sS -L --get https://github.com/tihoangyeudau/rpi-fan/releases/download/1.0.0/rpi-fan.tar.gz | tar --strip-components=0 -C ${ROOTFS_DIR}/usr/share/ rpi-fan -xz
 
 # Copy service file
+cp ambilightwifid@.service ${ROOTFS_DIR}/etc/systemd/system/ambilightwifid@.service
 cp rpi-fan.service ${ROOTFS_DIR}/etc/systemd/system/rpi-fan.service
 
 # Enable SPI and force HDMI output
@@ -40,6 +41,6 @@ echo 'Installing Ambilight WiFi ........................'
 apt install /tmp/ambilight-wifi.deb
 rm /tmp/ambilight-wifi.deb
 echo 'Registering Ambilight WiFi ........................'
-systemctl -q enable ambilightwifid@.service
-systemctl -q enable rpi-fan.service
+systemctl -q enable ambilightwifid"@rml".service
+systemctl -q enable rpi-fan"@rml".service
 EOF
